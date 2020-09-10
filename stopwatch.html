@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+        body,
+        .jumbotron {
+            padding: 30px;
+        }
+        
+        .timer {
+            font-size: 120px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="jumbotron text-center">
+
+        <div class="timer">
+            <span class="minutes">00</span>:<span class="seconds">00</span>
+        </div>
+        <div class="timer-buttons">
+            <button class="btn btn-lg btn-success" name="start">Start</button>
+            <button class="btn btn-lg btn-danger" name="stop">Stop</button>
+
+            <button class="btn btn-link bt-block" name="reset">Reset</button>
+        </div>
+    </div>
+    <!--❤❤❤javascript starts here❤❤❤-->
+    <script>
+        //grab everything we need
+        const Startbutton = document.querySelector('[name=start]');
+        const Stopbutton = document.querySelector('[name=stop]');
+        const Resetbutton = document.querySelector('[name=reset]');
+        const minutes = document.querySelector('.minutes');
+        const seconds = document.querySelector('.seconds');
+        let timerTime = 00;
+        let interval;
+        let isRunning = false;
+        //define our functions
+        /* setInterval(function() {
+             timerTime++;
+             const numOfminutes = Math.floor(timerTime / 60);
+             const numOfseconds = timerTime % 60;
+
+             console.log(
+                 numOfminutes,
+                 numOfseconds
+             );
+             minutes.innerText = pad(numOfminutes);
+             seconds.innerText = pad(numOfseconds);
+
+         }, 1000);
+         */
+
+
+        function startTimer() {
+            if (isRunning) return;
+            isRunning = true;
+
+            interval = setInterval(incrementTimer, 1000);
+        }
+
+        function stopTimer() {
+            if (!isRunning) return;
+            isRunning = false;
+            clearInterval(interval);
+        }
+
+        function resetTimer() {
+            stopTimer();
+            timerTime = 0;
+            minutes.innerText = '00';
+            seconds.innerText = '00';
+        }
+
+        function incrementTimer() {
+            timerTime++;
+            console.log('check');
+            const numOfminutes = Math.floor(timerTime / 60);
+            const numOfseconds = timerTime % 60;
+
+            /*console.log(
+                numOfminutes,
+                numOfseconds
+            );*/
+            minutes.innerText = pad(numOfminutes);
+            seconds.innerText = pad(numOfseconds);
+        }
+
+        function pad(number) {
+            if (number < 10) {
+                return '0' + number;
+            } else {
+                return number;
+            }
+        }
+
+
+
+        //add action listener
+        Startbutton.addEventListener('click', startTimer);
+        Stopbutton.addEventListener('click', stopTimer);
+        Resetbutton.addEventListener('click', resetTimer);
+    </script>
+
+
+
+</body>
+
+</html>

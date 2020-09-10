@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+        body {
+            padding: 30px;
+            background: #EFEFEF;
+        }
+        
+        .container {
+            background: #fff;
+            padding: 50px;
+            font-size: 19px;
+            line-height: 1.5;
+            min-height: 3000px;
+        }
+        
+        .scroll-line {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 8px;
+            background: skyblue;
+            transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scroll-line">
+
+    </div>
+    <div class="container">
+        <div class="content">
+            Hi I'm vairavel. I'm a front end developer.
+        </div>
+    </div>
+
+    </div>
+
+
+    <!--❤❤❤ javascript goes here ❤❤❤-->
+    <script>
+        //get what we want
+        const scrollLine = document.querySelector('.scroll-line');
+
+
+
+        //define our function
+        function fillScrollLine() {
+            const windowHeight = window.innerHeight;
+            const fullHeight = document.body.clientHeight;
+            const scrolled = window.scrollY;
+            const percentScrolled = (scrolled / (fullHeight - windowHeight)) * 100;
+
+
+            scrollLine.style.width = `${percentScrolled}%`;
+        }
+
+
+
+
+        //add action listener
+        window.addEventListener('scroll', fillScrollLine);
+    </script>
+</body>
+
+</html>

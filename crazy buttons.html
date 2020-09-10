@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>crazy buttons</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+        body {
+            padding: 30px;
+        }
+        
+        .btn-crazy {
+            top: 30px;
+            left: 40%;
+            width: 20%;
+            transition: 0.5s ease all;
+            position: absolute;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="text-center">
+        <button type="button" class="btn-crazy btn btn-lg btn-danger">Click me</button>
+        <button type="button" class="btn-crazy btn btn-lg btn-primary">Click me</button>
+        <button type="button" class="btn-crazy btn btn-lg btn-success">Click me</button>
+
+    </div>
+
+
+
+
+    <!--❤❤❤Javascript starts here ❤❤❤-->
+    <script>
+        //grab everything
+        const crazyButtons = document.querySelectorAll('.btn-crazy');
+
+
+
+        //define our functions
+        function movebutton() {
+
+
+            const offsetLeft = Math.random() * (window.innerWidth - this.clientWidth);
+            const offsetTop = Math.random() * (window.innerHeight - this.clientHeight);
+            console.log(offsetLeft, offsetTop);
+            this.style.top = offsetTop + 'px';
+            this.style.left = offsetLeft + 'px';
+        }
+
+
+
+        //add event listeners
+        crazyButtons.forEach(button => button.addEventListener('click', movebutton));
+    </script>
+</body>
+
+</html>
